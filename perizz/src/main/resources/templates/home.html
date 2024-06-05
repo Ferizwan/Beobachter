@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Sates</title>
+</head>
+<body>
+    <h1>Sates</h1>
+    <ul>
+        <li th:each="sate : ${sates}"> <span th:text="${sate.name}">Name</span> - 
+            <span th:text="${sate.type}">Type</span> - 
+            <span th:text="${sate.price}">Price</span>
+        </li>
+    </ul>
+</body>
+</html>

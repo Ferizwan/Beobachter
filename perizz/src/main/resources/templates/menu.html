@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Admin Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+  <!-- Your custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/animate.css" rel="stylesheet" media="screen">
+  <link href="css/font-awesome.min.css" rel="stylesheet">
+  <link href="css/owl.theme.css" rel="stylesheet">
+  <link href="css/owl.carousel.css" rel="stylesheet">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="wrapper">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="edit">Edit Menu Makanan</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="login">Keluar <i class="icon-logout"></i></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="sidebar">
+    <ul class="sidebar-list">
+      <li><a href="readmin"><i class="icon-home"></i> Dashboard</a></li>
+      <li><a href="edit"><i class="icon-equalizer"></i> Menu</a></li>
+      <li><a href="feedbacks"><i class="icon-users"></i> Feedbacks</a></li>
+
+      <div style="padding: 10px; bottom: 0; position: absolute;">
+        <li>
+          <div class="time"></div>
+        </li>
+        <li>
+          <div class="date"></div>
+        </li>
+      </div>
+    </ul>
+  </div>
+
+  <section class="content">
+    <div class="info-card">
+      <div>
+        <div class="overlay">
+          <div class="container">
+            <div class="row">
+              <div class="col">
+                <div class="container">
+                  <div>
+                    <h1>Menu Makanan Sate</h1> <br>
+                  </div>
+                  <div>
+                    <!-- Add Modal Button -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addModal">Add Menu</button>
+                  </div>
+                  <div>
+                    <div class="row mx-auto ">
+                      <div th:each="menus : ${menus}" class="card card-home-photos pt-3 rounded-4 mx-auto mt-5  mb-5 col-md-4"
+                           style="width: 15rem;">
+                        <img th:src="@{'/images/' + ${menus.imageFileName}}" width="200px"  height="200px" class="card-img-top" alt="...">
+                        <div class="card-body text-center">
+                          <p th:text="${menus.namaMenu}"></p>
+                          <p th:text="${menus.hargaMenu}"></p>
+                          <a th:href="@{/edit/{id}(id=${menus.id})}" data-bs-toggle="modal" data-bs-target="#editModal" class="buton-edit btn btn-warning">Edit</a>
+                          <a th:href="@{/delete/{id}(id=${menus.id})}" onclick="return confirm('aseli bg?')" class="btn btn-danger">Delete</a>
+                        </div>
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Add Menu</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- Form to add menu -->
+          <form method="post" action="/createMenu" enctype="multipart/form-data" th:object="${menuDto}">
+            <div class="mb-3">
+              <label for="recipient-name" class="col-form-label">Nama Menu :</label>
+              <input type="text" th:field="${menuDto.namaMenu}" class="form-control" id="recipient-name">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Gambar :</label>
+              <input type="file" th:field="${menuDto.imageFile}" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="message-text" class="col-form-label">Harga :</label>
+              <input type="text" th:field="${menuDto.hargaMenu}" class="form-control">
+            </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+<!--edit modal-->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit Photos</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form method="post" id="editForm" action="/update" enctype="multipart/form-data">
+          <div class="mb-3">
+            <input type="hidden" name="id" id="idEdit">
+            <label for="namefasilitas" class="col-form-label">Nama Menu : </label>
+            <input type="text" class="form-control" id="namefasilitas" name="nameFasilitas">
+          </div>
+
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Gambar : </label>
+            <img src="" width="70px" height="70px" class= " mb-4 ms-4" id="gambarEdit" name="gambarEdit" alt="">
+            <input type="file" id="gambarAfterEdit" name="imageFileName" class="form-control">
+          </div>
+          <div class="mb-3">
+            <input type="hidden" name="id" id="idEdit">
+            <label for="namefasilitas" class="col-form-label">Harga : </label>
+            <input type="text" class="form-control" id="Harga" name="harga">
+          </div>
+      </div>
+      <div class="modal-footer">
+        <!--                        <input type="hidden" id="idEdit" name="id">-->
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/jQuery-2.1.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script src="editLogic.js"></script>
+</body>
+
+</html>
