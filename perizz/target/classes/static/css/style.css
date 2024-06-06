@@ -1,0 +1,261 @@
+body {
+
+  font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.wrapper {
+  position: static;
+  overflow: hidden;
+  margin: 0;
+}
+
+.wrapper:before,
+.wrapper:after {
+  content: " ";
+  display: table;
+}
+
+.navbar {
+  background-color: #fff;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.navbar .navbar-brand {
+  padding: 7px 0;
+  margin: 8px 0;
+}
+
+.navbar-default .navbar-toggle,
+.navbar-default .navbar-toggle:focus,
+.navbar-default .navbar-toggle:hover {
+  float: left;
+  padding: 10px;
+  display: inherit;
+  border-color: transparent;
+  background-color: transparent;
+}
+
+.navbar i {
+  padding: 10px;
+  font-size: 18px;
+  vertical-align: middle;
+}
+.sidebar {
+  width: 180px;
+  display:block;
+  position: fixed;
+  background-color: #223F97;
+  color: #fff;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  z-index: 1000;
+  transition: all .2s ease;
+
+}
+.sidebar-list {
+  margin-top: 70px;
+  padding: 0;
+  list-style: none;
+}
+
+
+.sidebar-list li {
+  padding: 5px;
+
+}
+.sidebar-list  a {
+  color: #ffffff;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+}
+
+.sidebar-list a > i {
+  padding-right: 10px;
+  font-size: 18px;
+  vertical-align: middle;
+
+}
+
+.sidebar-list  a:hover {
+  color: #ffffff;
+  background-color: rgb(70, 101, 143);
+
+}
+.sidebar-collapse .sidebar {
+  -webkit-transform: translate(-180px, 0);
+  -moz-transform: translate(-180px, 0);
+  -ms-transform: translate(-180px, 0);
+  -o-transform: translate(-180px, 0);
+  transform: translate(-180px, 0);
+}
+
+.content-wrapper {
+  position: static;
+  overflow: hidden;
+
+}
+
+.content {
+  margin-top: 70px;
+  margin-left: 180px;
+  padding: 20px;
+  -webkit-transition: margin-left 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+  -moz-transition: margin-left 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+  -ms-transition: margin-left 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+  -o-transition: margin-left 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+  transition: margin-left 0.3s cubic-bezier(0.32, 1.25, 0.375, 1.15);
+
+}
+
+.sidebar-collapse .content {
+
+  margin-left: 0;
+
+
+}
+
+@media (max-width: 768px) {
+
+  .sidebar {
+    margin-left: -180px;
+  }
+  .sidebar-collapse .sidebar {
+    -webkit-transform: translate(180px, 0);
+    -moz-transform: translate(180px, 0);
+    -ms-transform: translate(180px, 0);
+    -o-transform: translate(180px, 0);
+    transform: translate(180px, 0);
+  }
+  .navbar-nav {
+    padding-right: 10px;
+  }
+  .content {
+    margin-left: 0;
+  }
+
+}
+
+table {
+  background: #223F97;
+  border-radius: 1em;
+  border-collapse: collapse;
+
+}
+th {
+  border-bottom: 1px solid #364043;
+  color: white;
+  font-weight: 600;
+  padding: 0.5em 1em;
+  text-align: left;
+}
+td {
+  color: #fff;
+  font-weight: 400;
+  padding: 0.65em 1em;
+}
+.disabled td {
+  color: #4F5F64;
+}
+tbody tr {
+  transition: background 0.25s ease;
+}
+tbody tr:hover {
+  background: #014055;
+  border-radius: 1em;
+}
+
+.button, .showInputButton, .submitButton, .cancelButton, .textInput, .buttonkosongkan, .textInputTambah {
+  background-color: #ffffff; /* Warna putih untuk kontras lembut */
+  color: #223F97; /* Warna teks yang sama dengan latar belakang tabel */
+  border: none;
+  padding: 5px 10px; /* Ukuran padding dikurangi untuk tombol yang lebih kecil */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* Ukuran font dikurangi */
+  margin: 2px 1px; /* Margin dikurangi */
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5em;
+}
+
+.showInputButtonTambah, .cancelButtonTambah, .submitButtonTambah, .buttonTambah {
+  background-color: #28A745;
+  color: white; /* Warna teks yang sama dengan latar belakang tabel */
+  border: none;
+  padding: 5px 10px; /* Ukuran padding dikurangi untuk tombol yang lebih kecil */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px; /* Ukuran font dikurangi */
+  margin: 2px 1px; /* Margin dikurangi */
+  cursor: pointer;
+  border-radius: 4px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 1.5em;
+}
+
+.buttonkosongkan {
+  background-color: gray;
+  color: white;
+  border-radius: 1.5em;
+}
+
+.buttonkosongkan:hover {
+  background-color: #2F2F2F;
+}
+
+.button:hover {
+  background-color: #e0e0e0; /* Warna abu-abu muda untuk efek hover */
+}
+
+.showInputButton:hover {
+  background-color: #e0e0e0; /* Warna abu-abu muda untuk efek hover */
+}
+
+.submitButton:hover {
+  background-color: #e0e0e0; /* Warna abu-abu muda untuk efek hover */
+}
+
+.cancelButton:hover {
+  background-color: #e0e0e0;
+}
+
+.input-container input[type="submit"], .input-container input[type="text"] {
+  background-color: #223F97; 
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+
+.input-container {
+  display: none;
+  margin-top: 20px;
+}
+.input-container input[type="text"] {
+  width: calc(100% - 24px); /* Adjust width to fit container with padding */
+  max-width: 300px; /* Maximum width to ensure it doesn't get too large */
+  background-color: white; /* Background color for input field */
+  color: black; /* Text color for input field */
+  border: 1px solid #223F97;
+}
